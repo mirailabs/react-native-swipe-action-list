@@ -1,11 +1,10 @@
+import { registerRootComponent } from 'expo';
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { SwipeListView } from 'react-native-swipe-list-view';
 import { Appbar } from 'react-native-paper';
-import Constants from 'expo-constants';
+import SwipeActionList from 'react-native-swipe-action-list';
 
 import EmailListItem from './components/EmailListItem';
-import SwipeActionList from './components/SwipeActionList';
 
 const keyExtractor = (item, _) => item.id;
 
@@ -84,3 +83,4 @@ const styles = StyleSheet.create({
   },
 });
 
+registerRootComponent(App);
