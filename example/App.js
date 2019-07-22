@@ -1,7 +1,7 @@
 import { registerRootComponent } from 'expo';
 import * as React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
-import { Appbar } from 'react-native-paper';
+import { Appbar, IconButton } from 'react-native-paper';
 import SwipeActionList from 'react-native-swipe-action-list';
 
 import EmailListItem from './components/EmailListItem';
@@ -66,6 +66,8 @@ export default class App extends React.Component {
             keyExtractor={keyExtractor}
             data={this.state.data}
             renderItem={this.renderItem}
+            leftHiddenItem={<IconButton icon="archive" />}
+            rightHiddenItem={<IconButton icon="delete" />}
             onSwipeLeft={this.onSwipeLeft}
             onSwipeRight={this.onSwipeRight}
           />

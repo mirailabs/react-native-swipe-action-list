@@ -27,7 +27,6 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "react-native-paper": "2.15.2",
     "react-native-swipe-list-view": "2.0.0"
   },
   "peerDependencies": {

@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Dimensions, Animated } from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
-import { IconButton } from 'react-native-paper';
 
 const Defaults = {
   ANIM_COLOR_DURATION: 200,
   ANIM_HEIGHT_DURATION: 150,
 };
 
-function ActionRowBack({colorAnim}) {
+function ActionRowBack({leftView, rightView, colorAnim}) {
   const backgroundColor = colorAnim.interpolate({
     inputRange: [-1, 0, 1],
     outputRange: ['#f00', '#f6f6f6', '#0f0']
@@ -24,10 +23,10 @@ function ActionRowBack({colorAnim}) {
   return (
     <Animated.View style={[styles.container, {backgroundColor}]}>
       <Animated.View style={{opacity: leftOpacity}}>
-        <IconButton icon="archive" />
+        {leftView}
       </Animated.View>
       <Animated.View style={{opacity: rightOpacity}}>
-        <IconButton icon="delete" />
+        {rightView}
       </Animated.View>
     </Animated.View>
   );
@@ -72,6 +71,8 @@ export default class SwipeActionList extends React.Component {
     const key = this.props.keyExtractor(data.item);
     return (
       <ActionRowBack
+        leftView={this.props.leftHiddenItem}
+        rightView={this.props.rightHiddenItem}
         colorAnim={this.state.colorAnims[key]}
         rowHeightAnim={this.state.rowHeightAnim}
       />
