@@ -7,16 +7,16 @@ const Defaults = {
   ANIM_HEIGHT_DURATION: 150,
 };
 
-function ActionRowBack({leftView, rightView, colorAnim}) {
+function ActionRowBack({leftView, rightView, opacityAnim, colorAnim}) {
   const backgroundColor = colorAnim.interpolate({
     inputRange: [-1, 0, 1],
     outputRange: ['#f00', '#f6f6f6', '#0f0']
   });
-  const leftOpacity = colorAnim.interpolate({
+  const leftOpacity = opacityAnim.interpolate({
     inputRange: [-1, 0, 1],
     outputRange: [0, 1, 1]
   });
-  const rightOpacity = colorAnim.interpolate({
+  const rightOpacity = opacityAnim.interpolate({
     inputRange: [-1, 0, 1],
     outputRange: [1, 1, 0]
   });
@@ -35,6 +35,11 @@ function ActionRowBack({leftView, rightView, colorAnim}) {
 export default class SwipeActionList extends React.Component {
   constructor(props) {
     super(props);
+    const opacityAnims = this.props.data.reduce((acc, item) => {
+      const key = this.props.keyExtractor(item);
+      acc[key] = new Animated.Value(0);
+      return acc;
+    }, {});
     const colorAnims = this.props.data.reduce((acc, item) => {
       const key = this.props.keyExtractor(item);
       acc[key] = new Animated.Value(0);
@@ -46,6 +51,7 @@ export default class SwipeActionList extends React.Component {
       return acc;
     }, {});
     this.state = {
+      opacityAnims,
       colorAnims,
       rowHeightAnims
     }
@@ -73,10 +79,16 @@ export default class SwipeActionList extends React.Component {
       <ActionRowBack
         leftView={this.props.leftHiddenItem}
         rightView={this.props.rightHiddenItem}
+        opacityAnim={this.state.opacityAnims[key]}
         colorAnim={this.state.colorAnims[key]}
         rowHeightAnim={this.state.rowHeightAnim}
       />
     );
+  }
+
+  onSwipeValueChange = (swipeData) => {
+    const { key, value, direction } = swipeData;
+    this.state.opacityAnims[key].setValue(value < 0 ? -1 : 1);
   }
 
   onRowOpen = (key, rowMap, toValue) => {
@@ -110,6 +122,7 @@ export default class SwipeActionList extends React.Component {
         rightOpenValue={-screenWidth}
         leftOpenValue={screenWidth}
         onRowOpen={this.onRowOpen}
+        onSwipeValueChange={this.onSwipeValueChange}
         renderItem={this.renderItem}
         // Make sure to not trigger a row close on scroll since it has racing
         // issues with onSwipe(Left|Right).
