@@ -55,7 +55,7 @@ export default class App extends React.Component {
   renderLeftHiddenItem = () => {
     return (
       <View style={styles.leftHiddenContainer}>
-        <IconButton icon="archive" color={'white'} style={{marginLeft: 18}}/>
+        <IconButton icon="archive" color={'white'} style={{marginLeft: 22}}/>
       </View>
     );
   }
@@ -63,7 +63,7 @@ export default class App extends React.Component {
   renderRightHiddenItem = () => {
     return (
       <View style={styles.rightHiddenContainer}>
-        <IconButton icon="delete" color={'white'} style={{marginRight: 18}}/>
+        <IconButton icon="delete" color={'white'} style={{marginRight: 22}}/>
       </View>
     );
   }
