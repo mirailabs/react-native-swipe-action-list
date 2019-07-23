@@ -2,11 +2,6 @@ import * as React from 'react';
 import { Text, View, StyleSheet, Dimensions, Animated } from 'react-native';
 import { SwipeListView } from 'react-native-swipe-list-view';
 
-const Defaults = {
-  ANIM_COLOR_DURATION: 200,
-  ANIM_HEIGHT_DURATION: 150,
-};
-
 function ActionRowBack({renderLeftHiddenItem, renderRightHiddenItem, opacityAnim}) {
   const leftOpacity = opacityAnim.interpolate({
     inputRange: [-1, 0, 1],
@@ -29,6 +24,13 @@ function ActionRowBack({renderLeftHiddenItem, renderRightHiddenItem, opacityAnim
 }
 
 export default class SwipeActionList extends React.Component {
+  static Defaults = {
+    // a small buffer for client-specific animation hooks to run
+    ANIM_HOOK_DURATION: 200,
+    // the animation to remove a row
+    ANIM_HEIGHT_DURATION: 150,
+  };
+
   constructor(props) {
     super(props);
     const opacityAnims = this.props.data.reduce((acc, item) => {
@@ -36,7 +38,7 @@ export default class SwipeActionList extends React.Component {
       acc[key] = new Animated.Value(0);
       return acc;
     }, {});
-    const colorAnims = this.props.data.reduce((acc, item) => {
+    const hookAnims = this.props.data.reduce((acc, item) => {
       const key = this.props.keyExtractor(item);
       acc[key] = new Animated.Value(0);
       return acc;
@@ -48,7 +50,7 @@ export default class SwipeActionList extends React.Component {
     }, {});
     this.state = {
       opacityAnims,
-      colorAnims,
+      hookAnims,
       rowHeightAnims
     }
   }
@@ -89,8 +91,8 @@ export default class SwipeActionList extends React.Component {
   onRowOpen = (key, rowMap, toValue) => {
     if (toValue < 0) {
       Animated.sequence([
-        Animated.timing(this.state.colorAnims[key], {toValue: -1, duration: Defaults.ANIM_COLOR_DURATION}),
-        Animated.timing(this.state.rowHeightAnims[key], {toValue: 0, duration: Defaults.ANIM_HEIGHT_DURATION})
+        Animated.timing(this.state.hookAnims[key], {toValue: -1, duration: SwipeActionList.Defaults.ANIM_HOOK_DURATION}),
+        Animated.timing(this.state.rowHeightAnims[key], {toValue: 0, duration: SwipeActionList.Defaults.ANIM_HEIGHT_DURATION})
       ]).start(() => {
         if (this.props.onSwipeLeft) {
           this.props.onSwipeLeft(key);
@@ -98,8 +100,8 @@ export default class SwipeActionList extends React.Component {
       });
     } else {
       Animated.sequence([
-        Animated.timing(this.state.colorAnims[key], {toValue: 1, duration: Defaults.ANIM_COLOR_DURATION}),
-        Animated.timing(this.state.rowHeightAnims[key], {toValue: 0, duration: Defaults.ANIM_HEIGHT_DURATION})
+        Animated.timing(this.state.hookAnims[key], {toValue: 1, duration: SwipeActionList.Defaults.ANIM_HOOK_DURATION}),
+        Animated.timing(this.state.rowHeightAnims[key], {toValue: 0, duration: SwipeActionList.Defaults.ANIM_HEIGHT_DURATION})
       ]).start(() => {
         if (this.props.onSwipeRight) {
           this.props.onSwipeRight(key);
