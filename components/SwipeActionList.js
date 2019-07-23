@@ -7,11 +7,7 @@ const Defaults = {
   ANIM_HEIGHT_DURATION: 150,
 };
 
-function ActionRowBack({leftView, rightView, opacityAnim, colorAnim}) {
-  const backgroundColor = colorAnim.interpolate({
-    inputRange: [-1, 0, 1],
-    outputRange: ['#f00', '#f6f6f6', '#0f0']
-  });
+function ActionRowBack({leftView, rightView, opacityAnim}) {
   const leftOpacity = opacityAnim.interpolate({
     inputRange: [-1, 0, 1],
     outputRange: [0, 1, 1]
@@ -21,11 +17,11 @@ function ActionRowBack({leftView, rightView, opacityAnim, colorAnim}) {
     outputRange: [1, 1, 0]
   });
   return (
-    <Animated.View style={[styles.container, {backgroundColor}]}>
-      <Animated.View style={{opacity: leftOpacity}}>
+    <Animated.View style={{flex: 1}}>
+      <Animated.View style={{position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, opacity: leftOpacity}}>
         {leftView}
       </Animated.View>
-      <Animated.View style={{opacity: rightOpacity}}>
+      <Animated.View style={{position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, opacity: rightOpacity}}>
         {rightView}
       </Animated.View>
     </Animated.View>
@@ -80,7 +76,6 @@ export default class SwipeActionList extends React.Component {
         leftView={this.props.leftHiddenItem}
         rightView={this.props.rightHiddenItem}
         opacityAnim={this.state.opacityAnims[key]}
-        colorAnim={this.state.colorAnims[key]}
         rowHeightAnim={this.state.rowHeightAnim}
       />
     );
@@ -141,7 +136,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: '#ecf0f1',
   },

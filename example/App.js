@@ -51,7 +51,23 @@ export default class App extends React.Component {
   onSwipeRight = (key) => {
     this.deleteItem(key);
   }
+
+  renderLeftHiddenItem = (data) => {
+    return (
+      <View style={styles.leftHiddenContainer}>
+        <IconButton icon="archive" color={'white'} style={{marginLeft: 18}}/>
+      </View>
+    );
+  }
   
+  renderRightHiddenItem = (data) => {
+    return (
+      <View style={styles.rightHiddenContainer}>
+        <IconButton icon="delete" color={'white'} style={{marginRight: 18}}/>
+      </View>
+    );
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -66,8 +82,8 @@ export default class App extends React.Component {
             keyExtractor={keyExtractor}
             data={this.state.data}
             renderItem={this.renderItem}
-            leftHiddenItem={<IconButton icon="archive" />}
-            rightHiddenItem={<IconButton icon="delete" />}
+            leftHiddenItem={this.renderLeftHiddenItem()}
+            rightHiddenItem={this.renderRightHiddenItem()}
             onSwipeLeft={this.onSwipeLeft}
             onSwipeRight={this.onSwipeRight}
           />
@@ -81,8 +97,21 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
+    backgroundColor: '#ecf0f1'
   },
+  leftHiddenContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'green'
+  },
+  rightHiddenContainer: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    backgroundColor: 'red'
+  }
 });
 
 registerRootComponent(App);
