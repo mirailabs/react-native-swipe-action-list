@@ -52,7 +52,7 @@ export default class App extends React.Component {
     this.deleteItem(key);
   }
 
-  renderLeftHiddenItem = (data) => {
+  renderLeftHiddenItem = () => {
     return (
       <View style={styles.leftHiddenContainer}>
         <IconButton icon="archive" color={'white'} style={{marginLeft: 18}}/>
@@ -60,7 +60,7 @@ export default class App extends React.Component {
     );
   }
   
-  renderRightHiddenItem = (data) => {
+  renderRightHiddenItem = () => {
     return (
       <View style={styles.rightHiddenContainer}>
         <IconButton icon="delete" color={'white'} style={{marginRight: 18}}/>
@@ -82,8 +82,8 @@ export default class App extends React.Component {
             keyExtractor={keyExtractor}
             data={this.state.data}
             renderItem={this.renderItem}
-            leftHiddenItem={this.renderLeftHiddenItem()}
-            rightHiddenItem={this.renderRightHiddenItem()}
+            renderLeftHiddenItem={this.renderLeftHiddenItem}
+            renderRightHiddenItem={this.renderRightHiddenItem}
             onSwipeLeft={this.onSwipeLeft}
             onSwipeRight={this.onSwipeRight}
           />

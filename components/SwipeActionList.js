@@ -7,7 +7,7 @@ const Defaults = {
   ANIM_HEIGHT_DURATION: 150,
 };
 
-function ActionRowBack({leftView, rightView, opacityAnim}) {
+function ActionRowBack({renderLeftHiddenItem, renderRightHiddenItem, opacityAnim}) {
   const leftOpacity = opacityAnim.interpolate({
     inputRange: [-1, 0, 1],
     outputRange: [0, 1, 1]
@@ -19,10 +19,10 @@ function ActionRowBack({leftView, rightView, opacityAnim}) {
   return (
     <Animated.View style={{flex: 1}}>
       <Animated.View style={{position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, opacity: leftOpacity}}>
-        {leftView}
+        {renderLeftHiddenItem()}
       </Animated.View>
       <Animated.View style={{position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, opacity: rightOpacity}}>
-        {rightView}
+        {renderRightHiddenItem()}
       </Animated.View>
     </Animated.View>
   );
@@ -73,8 +73,8 @@ export default class SwipeActionList extends React.Component {
     const key = this.props.keyExtractor(data.item);
     return (
       <ActionRowBack
-        leftView={this.props.leftHiddenItem}
-        rightView={this.props.rightHiddenItem}
+        renderLeftHiddenItem={this.props.renderLeftHiddenItem}
+        renderRightHiddenItem={this.props.renderRightHiddenItem}
         opacityAnim={this.state.opacityAnims[key]}
         rowHeightAnim={this.state.rowHeightAnim}
       />
