@@ -7,7 +7,7 @@ export default function EmailListItem({subject, sender, body}) {
       <View style={styles.avatar}></View>
       <View style={styles.rightContainer}>
         <Text style={styles.subject}>{subject}</Text>
-        <Text>{sender}<Text style={styles.body}> — {body}</Text></Text>
+        <Text numberOfLines={1} ellipsizeMode='tail'>{sender}<Text style={styles.body}> — {body}</Text></Text>
       </View>
     </View>
   );
@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
   rightContainer: {
     flex: 1,
     justifyContent: 'center',
+    marginRight: 16,
     // borderBottomWidth: 0.5,
     // borderBottomColor: 'rgba(0, 0, 0, 0.6)'
   },
