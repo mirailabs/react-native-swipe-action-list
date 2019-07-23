@@ -82,7 +82,7 @@ export default class SwipeActionList extends React.Component {
   }
 
   onSwipeValueChange = (swipeData) => {
-    const { key, value, direction } = swipeData;
+    const { key, value } = swipeData;
     this.state.opacityAnims[key].setValue(value < 0 ? -1 : 1);
   }
 
