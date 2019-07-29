@@ -1,6 +1,6 @@
 {
   "name": "react-native-swipe-action-list",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A list that performs actions on items when swiped.",
   "repository": {
     "type": "git",
