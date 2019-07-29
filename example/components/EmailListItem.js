@@ -25,8 +25,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     marginRight: 16,
-    // borderBottomWidth: 0.5,
-    // borderBottomColor: 'rgba(0, 0, 0, 0.6)'
   },
   avatar: {
     width: 40,
