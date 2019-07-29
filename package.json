@@ -17,7 +17,6 @@
   "bugs": {
     "url": "https://github.com/mirailabs/react-native-swipe-action-list/issues"
   },
-  "homepage": "https://github.com/mirailabs/react-native-swipe-action-list#readme",
   "main": "components/SwipeActionList.js",
   "scripts": {
     "start": "expo start --config example/app.json",
