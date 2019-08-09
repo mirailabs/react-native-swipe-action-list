@@ -42,11 +42,11 @@
     "@babel/runtime": "^7.5.5",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-expo": "^5.1.1",
-    "expo": "^33.0.0",
+    "expo": "^34.0.1",
     "jest-expo": "^34.0.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
     "react-native-paper": "2.15.2",
     "react-test-renderer": "16.8.3",
     "standard-version": "^7.0.0"
