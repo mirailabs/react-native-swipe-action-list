@@ -24,7 +24,11 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
+    "test": "jest",
     "release": "standard-version"
+  },
+  "jest": {
+    "preset": "jest-expo"
   },
   "dependencies": {
     "react-native-swipe-list-view": "2.0.0"
@@ -38,11 +42,13 @@
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-expo": "^5.1.1",
     "expo": "^33.0.0",
+    "jest-expo": "^34.0.0",
     "react": "16.8.3",
-    "react-dom": "^16.8.6",
+    "react-dom": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-33.0.0.tar.gz",
     "react-native-paper": "2.15.2",
     "react-native-web": "^0.11.4",
+    "react-test-renderer": "16.8.3",
     "standard-version": "^7.0.0"
   }
 }
