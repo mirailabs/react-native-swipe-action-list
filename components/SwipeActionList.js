@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Dimensions, Animated } from 'react-native';
+import PropTypes from 'prop-types';
 import { SwipeListView } from 'react-native-swipe-list-view';
 
 function ActionRowBack({renderLeftHiddenItem, renderRightHiddenItem, opacityAnim}) {
@@ -151,6 +152,16 @@ export default class SwipeActionList extends React.Component {
     );
   }
 }
+
+SwipeActionList.propTypes = {
+  data: PropTypes.array.isRequired,
+  renderItem: PropTypes.func.isRequired,
+  keyExtractor: PropTypes.func.isRequired,
+  renderLeftHiddenItem: PropTypes.func.isRequired,
+  renderRightHiddenItem: PropTypes.func.isRequired,
+  onSwipeLeft: PropTypes.func,
+  onSwipeRight: PropTypes.func
+};
 
 const styles = StyleSheet.create({
   container: {
