@@ -1,0 +1,11 @@
+{
+  "types": [
+    {"type": "feat", "section": "Features"},
+    {"type": "fix", "section": "Fixes"},
+    {"type": "imp", "section": "Improvements"},
+    {"type": "refactor", "section": "changes invisible to end-users", "hidden": true},
+    {"type": "docs", "section": "Documentation"},
+    {"type": "build", "section": "changes to the build system (version, dependencies, ci, etc.)", "hidden": true}
+  ],
+  "releaseCommitMessageFormat": "build: Release v{{currentTag}}"
+}
