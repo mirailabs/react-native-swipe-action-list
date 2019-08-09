@@ -47,7 +47,7 @@
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
-    "react-native-paper": "2.15.2",
+    "react-native-paper": "^2.16.0",
     "react-test-renderer": "16.8.3",
     "standard-version": "^7.0.0"
   }
