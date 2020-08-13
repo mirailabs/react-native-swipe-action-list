@@ -39,16 +39,16 @@
     "react-native": ">=0.23.1"
   },
   "devDependencies": {
-    "@babel/runtime": "^7.5.5",
+    "@babel/runtime": "^7.11.2",
     "babel-plugin-module-resolver": "^3.2.0",
     "babel-preset-expo": "^5.1.1",
     "expo": "^34.0.1",
-    "jest-expo": "^34.0.0",
+    "jest-expo": "^34.1.0",
     "react": "16.8.3",
     "react-dom": "16.8.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
     "react-native-paper": "^2.16.0",
     "react-test-renderer": "16.8.3",
-    "standard-version": "^7.0.0"
+    "standard-version": "^7.1.0"
   }
 }
