@@ -49,6 +49,6 @@
     "react-native": "https://github.com/expo/react-native/archive/sdk-38.0.2.tar.gz",
     "react-native-paper": "^2.16.0",
     "react-test-renderer": "16.8.3",
-    "standard-version": "^8.0.1"
+    "standard-version": "^9.0.0"
   }
 }
