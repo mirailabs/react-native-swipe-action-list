@@ -11,6 +11,18 @@ A list view that supports swipe actions for React Native (Android &amp; iOS).
 
 ![demo gif](docs/demo.gif)
 
+## Installation
+
+```
+npm i react-native-swipe-action-list
+```
+
+or
+
+```
+yarn add react-native-swipe-action-list
+```
+
 ## API
 
 ### `<SwipeActionList />`
