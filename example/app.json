@@ -1,24 +1,4 @@
 {
-  "expo": {
-    "name": "SwipeActionList Example",
-    "slug": "react-native-swipe-action-list-example",
-    "privacy": "public",
-    "platforms": ["ios", "android", "web"],
-    "version": "1.0.0",
-    "entryPoint": "./example/App.js",
-    "orientation": "portrait",
-    "icon": "./example/assets/icon.png",
-    "splash": {
-      "image": "./example/assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": ["**/*"],
-    "ios": {
-      "supportsTablet": true
-    }
-  }
+  "name": "example",
+  "displayName": "example"
 }
