@@ -10,8 +10,6 @@ import {
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
-// import {Appbar, IconButton} from 'react-native-paper';
-
 import SwipeActionList from 'react-native-swipe-action-list';
 import EmailListItem from './EmailListItem';
 
@@ -91,18 +89,18 @@ const App = () => {
           <View style={{flexDirection: 'row'}}>
             <Image
               style={{width: 24, height: 24, marginRight: 32}}
-              source={require('./baseline_menu_white_18dp.png')}
+              source={require('./assets/baseline_menu_white_18dp.png')}
             />
             <Text style={{fontSize: 20, color: 'white'}}>Inbox</Text>
           </View>
           <View style={{flexDirection: 'row'}}>
             <Image
               style={{width: 24, height: 24}}
-              source={require('./baseline_search_white_18dp.png')}
+              source={require('./assets/baseline_search_white_18dp.png')}
             />
             <Image
               style={{width: 24, height: 24, marginLeft: 24}}
-              source={require('./baseline_more_vert_white_18dp.png')}
+              source={require('./assets/baseline_more_vert_white_18dp.png')}
             />
           </View>
         </View>
@@ -124,7 +122,7 @@ const App = () => {
               <View style={styles.leftHiddenContainer}>
                 <Image
                   style={{width: 24, height: 24, marginLeft: 22}}
-                  source={require('./baseline_archive_white_18dp.png')}
+                  source={require('./assets/baseline_archive_white_18dp.png')}
                 />
               </View>
             );
@@ -134,7 +132,7 @@ const App = () => {
               <View style={styles.rightHiddenContainer}>
                 <Image
                   style={{width: 24, height: 24, marginRight: 22}}
-                  source={require('./baseline_delete_white_18dp.png')}
+                  source={require('./assets/baseline_delete_white_18dp.png')}
                 />
               </View>
             );
