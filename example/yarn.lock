@@ -5551,17 +5551,6 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
-"react-native-swipe-action-list@file:..":
-  version "0.0.3"
-  dependencies:
-    prop-types "^15.7.2"
-    react-native-swipe-list-view "2.0.0"
-
-react-native-swipe-list-view@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-swipe-list-view/-/react-native-swipe-list-view-2.0.0.tgz#031db12a52d3441715ff1d1e127a8aaee95c21aa"
-  integrity sha512-Lyoau882tcyWeZ/+8GOM0vi1obLbvHcVEM980D9/Qh9lQ/f2wJhbKM4pTXVBmJoWc+IDn31TRAenWzpGahEK8A==
-
 react-native@0.63.4:
   version "0.63.4"
   resolved "https://registry.yarnpkg.com/react-native/-/react-native-0.63.4.tgz#2210fdd404c94a5fa6b423c6de86f8e48810ec36"
