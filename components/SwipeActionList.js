@@ -1,23 +1,43 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Dimensions, Animated } from 'react-native';
+import {Text, View, StyleSheet, Dimensions, Animated} from 'react-native';
 import PropTypes from 'prop-types';
-import { SwipeListView } from 'react-native-swipe-list-view';
+import {SwipeListView} from 'react-native-swipe-list-view';
 
-function ActionRowBack({renderLeftHiddenItem, renderRightHiddenItem, opacityAnim}) {
+function ActionRowBack({
+  renderLeftHiddenItem,
+  renderRightHiddenItem,
+  opacityAnim,
+}) {
   const leftOpacity = opacityAnim.interpolate({
     inputRange: [-1, 0, 1],
-    outputRange: [0, 1, 1]
+    outputRange: [0, 1, 1],
   });
   const rightOpacity = opacityAnim.interpolate({
     inputRange: [-1, 0, 1],
-    outputRange: [1, 1, 0]
+    outputRange: [1, 1, 0],
   });
   return (
     <Animated.View style={{flex: 1}}>
-      <Animated.View style={{position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, opacity: leftOpacity}}>
+      <Animated.View
+        style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          left: 0,
+          bottom: 0,
+          opacity: leftOpacity,
+        }}>
         {renderLeftHiddenItem()}
       </Animated.View>
-      <Animated.View style={{position: 'absolute', top: 0, right: 0, left: 0, bottom: 0, opacity: rightOpacity}}>
+      <Animated.View
+        style={{
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          left: 0,
+          bottom: 0,
+          opacity: rightOpacity,
+        }}>
         {renderRightHiddenItem()}
       </Animated.View>
     </Animated.View>
@@ -53,8 +73,8 @@ export default class SwipeActionList extends React.Component {
       itemHeight: -1,
       opacityAnims,
       hookAnims,
-      itemHeightAnims
-    }
+      itemHeightAnims,
+    };
   }
 
   renderItem = (data, rowMap) => {
@@ -65,9 +85,9 @@ export default class SwipeActionList extends React.Component {
     // onLayout callback to store the height.
     if (this.state.itemHeight < 0) {
       const onLayout = (evt) => {
-        const { height } = evt.nativeEvent.layout;
-        this.setState({ itemHeight: height });
-      }
+        const {height} = evt.nativeEvent.layout;
+        this.setState({itemHeight: height});
+      };
 
       return (
         <Animated.View onLayout={onLayout}>
@@ -80,7 +100,7 @@ export default class SwipeActionList extends React.Component {
         // height doesn't finish animating and has some small height left over
         // at the end. Chosen empirically.
         inputRange: [0, 0.02, 1],
-        outputRange: [0, 0, this.state.itemHeight]
+        outputRange: [0, 0, this.state.itemHeight],
       });
 
       return (
@@ -89,7 +109,7 @@ export default class SwipeActionList extends React.Component {
         </Animated.View>
       );
     }
-  }
+  };
 
   renderHiddenItem = (data, _) => {
     const key = this.props.keyExtractor(data.item);
@@ -100,18 +120,24 @@ export default class SwipeActionList extends React.Component {
         opacityAnim={this.state.opacityAnims[key]}
       />
     );
-  }
+  };
 
   onSwipeValueChange = (swipeData) => {
-    const { key, value } = swipeData;
+    const {key, value} = swipeData;
     this.state.opacityAnims[key].setValue(value < 0 ? -1 : 1);
-  }
+  };
 
   onRowOpen = (key, rowMap, toValue) => {
     if (toValue < 0) {
       Animated.sequence([
-        Animated.timing(this.state.hookAnims[key], {toValue: -1, duration: SwipeActionList.Defaults.ANIM_HOOK_DURATION}),
-        Animated.timing(this.state.itemHeightAnims[key], {toValue: 0, duration: SwipeActionList.Defaults.ANIM_HEIGHT_DURATION})
+        Animated.timing(this.state.hookAnims[key], {
+          toValue: -1,
+          duration: SwipeActionList.Defaults.ANIM_HOOK_DURATION,
+        }),
+        Animated.timing(this.state.itemHeightAnims[key], {
+          toValue: 0,
+          duration: SwipeActionList.Defaults.ANIM_HEIGHT_DURATION,
+        }),
       ]).start(() => {
         if (this.props.onSwipeLeft) {
           this.props.onSwipeLeft(key);
@@ -119,15 +145,21 @@ export default class SwipeActionList extends React.Component {
       });
     } else {
       Animated.sequence([
-        Animated.timing(this.state.hookAnims[key], {toValue: 1, duration: SwipeActionList.Defaults.ANIM_HOOK_DURATION}),
-        Animated.timing(this.state.itemHeightAnims[key], {toValue: 0, duration: SwipeActionList.Defaults.ANIM_HEIGHT_DURATION})
+        Animated.timing(this.state.hookAnims[key], {
+          toValue: 1,
+          duration: SwipeActionList.Defaults.ANIM_HOOK_DURATION,
+        }),
+        Animated.timing(this.state.itemHeightAnims[key], {
+          toValue: 0,
+          duration: SwipeActionList.Defaults.ANIM_HEIGHT_DURATION,
+        }),
       ]).start(() => {
         if (this.props.onSwipeRight) {
           this.props.onSwipeRight(key);
         }
       });
     }
-  }
+  };
 
   render() {
     const screenWidth = Dimensions.get('window').width;
@@ -160,7 +192,7 @@ SwipeActionList.propTypes = {
   renderLeftHiddenItem: PropTypes.func.isRequired,
   renderRightHiddenItem: PropTypes.func.isRequired,
   onSwipeLeft: PropTypes.func,
-  onSwipeRight: PropTypes.func
+  onSwipeRight: PropTypes.func,
 };
 
 const styles = StyleSheet.create({
@@ -171,4 +203,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#ecf0f1',
   },
 });
-
