@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Text, View, StyleSheet, Dimensions, Animated} from 'react-native';
+import {Dimensions, Animated} from 'react-native';
 import PropTypes from 'prop-types';
 import {SwipeListView} from 'react-native-swipe-list-view';
 
@@ -194,12 +194,3 @@ SwipeActionList.propTypes = {
   onSwipeLeft: PropTypes.func,
   onSwipeRight: PropTypes.func,
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#ecf0f1',
-  },
-});
