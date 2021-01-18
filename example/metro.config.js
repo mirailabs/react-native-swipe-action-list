@@ -13,14 +13,6 @@ module.exports = {
   // Since we keep the example app separate from our root project we need
   // to configure metro to include our lib in the JS bundle it builds.
   watchFolders: [reactNativeSwipeActionListRoot],
-  transformer: {
-    getTransformOptions: async () => ({
-      transform: {
-        experimentalImportSupport: false,
-        inlineRequires: false,
-      },
-    }),
-  },
   resolver: {
     // Duplicate copies of react-native in the metro bundle stop the app from loading
     // so blacklist the root project's version from being processed by metro.
@@ -34,5 +26,13 @@ module.exports = {
     extraNodeModules: {
       'react-native': path.resolve(__dirname, 'node_modules/react-native'),
     },
+  },
+  transformer: {
+    getTransformOptions: async () => ({
+      transform: {
+        experimentalImportSupport: false,
+        inlineRequires: false,
+      },
+    }),
   },
 };
