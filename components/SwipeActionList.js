@@ -133,10 +133,12 @@ export default class SwipeActionList extends React.Component {
         Animated.timing(this.state.hookAnims[key], {
           toValue: -1,
           duration: SwipeActionList.Defaults.ANIM_HOOK_DURATION,
+          useNativeDriver: true,
         }),
         Animated.timing(this.state.itemHeightAnims[key], {
           toValue: 0,
           duration: SwipeActionList.Defaults.ANIM_HEIGHT_DURATION,
+          useNativeDriver: false,
         }),
       ]).start(() => {
         if (this.props.onSwipeLeft) {
@@ -148,10 +150,12 @@ export default class SwipeActionList extends React.Component {
         Animated.timing(this.state.hookAnims[key], {
           toValue: 1,
           duration: SwipeActionList.Defaults.ANIM_HOOK_DURATION,
+          useNativeDriver: true,
         }),
         Animated.timing(this.state.itemHeightAnims[key], {
           toValue: 0,
           duration: SwipeActionList.Defaults.ANIM_HEIGHT_DURATION,
+          useNativeDriver: false,
         }),
       ]).start(() => {
         if (this.props.onSwipeRight) {
