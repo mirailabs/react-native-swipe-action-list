@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "prop-types": "^15.7.2",
-    "react-native-swipe-list-view": "2.0.0"
+    "react-native-swipe-list-view": "2.5.0"
   },
   "peerDependencies": {
     "react": ">=0.14.8",
