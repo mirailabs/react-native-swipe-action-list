@@ -175,11 +175,7 @@ export default class SwipeActionList extends React.Component {
         // Make sure to not trigger a row close on scroll since it has racing
         // issues with onSwipe(Left|Right).
         closeOnScroll={false}
-        // -- WORKAROUND ------------------------------------------------------
-        // https://github.com/jemise111/react-native-swipe-list-view/issues/312
-        // useNativeDriver causes a bug on Android when releasing a row swipe
-        useNativeDriver={false}
-        // -- /WORKAROUND -----------------------------------------------------
+        useNativeDriver={true}
       />
     );
   }
