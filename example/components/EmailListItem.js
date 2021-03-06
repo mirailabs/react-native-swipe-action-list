@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
 
-export default function EmailListItem({subject, sender, body}) {
-  return (
-    <View style={styles.container}>
-      <View style={styles.avatar}></View>
-      <View style={styles.rightContainer}>
-        <Text style={styles.subject}>{subject}</Text>
-        <Text numberOfLines={1} ellipsizeMode='tail'>{sender}<Text style={styles.body}> — {body}</Text></Text>
-      </View>
+const EmailListItem = ({subject, sender, body}) => (
+  <View style={styles.container}>
+    <View style={styles.avatar}></View>
+    <View style={styles.rightContainer}>
+      <Text style={styles.subject}>{subject}</Text>
+      <Text numberOfLines={1} ellipsizeMode="tail">
+        {sender}
+        <Text style={styles.body}> — {body}</Text>
+      </Text>
     </View>
-  );
-}
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -32,14 +33,16 @@ const styles = StyleSheet.create({
     marginLeft: 16,
     marginRight: 16,
     borderRadius: 20,
-    backgroundColor: '#f0f0f0'
+    backgroundColor: '#f0f0f0',
   },
   subject: {
     fontSize: 16,
-    marginBottom: 4
+    marginBottom: 4,
   },
   body: {
     fontSize: 14,
-    color: 'rgba(0, 0, 0, 0.6)'
-  }
+    color: 'rgba(0, 0, 0, 0.6)',
+  },
 });
+
+export default React.memo(EmailListItem);
