@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {SafeAreaView, StyleSheet, View, StatusBar, Image} from 'react-native';
 
 import SwipeActionList from 'react-native-swipe-action-list';
@@ -8,12 +8,46 @@ import EmailListItem from './components/EmailListItem';
 
 import emails from './data';
 
+const ArchiveRowBack = () => (
+  <View style={styles.leftHiddenContainer}>
+    <Image
+      style={styles.leftHiddenImage}
+      source={require('./assets/baseline_archive_white_18dp.png')}
+    />
+  </View>
+);
+
+const TrashRowBack = () => (
+  <View style={styles.rightHiddenContainer}>
+    <Image
+      style={styles.rightHiddenImage}
+      source={require('./assets/baseline_delete_white_18dp.png')}
+    />
+  </View>
+);
+
 const App = () => {
   const [data, setData] = useState(emails);
 
-  function deleteItem(key) {
-    setData(data.filter((x) => x.id !== key));
-  }
+  const emailToId = useCallback(item => item.id, []);
+
+  const renderItem = useCallback(data => {
+    const item = data.item;
+    return (
+      <EmailListItem
+        subject={item.subject}
+        sender={item.sender}
+        body={item.body}
+      />
+    );
+  }, []);
+
+  const deleteItem = useCallback(
+    key => {
+      setData(prevData => prevData.filter(x => emailToId(x) !== key));
+    },
+    [emailToId],
+  );
 
   return (
     <>
@@ -21,34 +55,11 @@ const App = () => {
       <SafeAreaView style={styles.container}>
         <Header />
         <SwipeActionList
-          keyExtractor={(item, _) => item.id}
+          keyExtractor={emailToId}
           data={data}
-          renderItem={(data, rowMap) => {
-            const item = data.item;
-            return (
-              <EmailListItem
-                subject={item.subject}
-                sender={item.sender}
-                body={item.body}
-              />
-            );
-          }}
-          renderLeftHiddenItem={() => (
-            <View style={styles.leftHiddenContainer}>
-              <Image
-                style={{width: 24, height: 24, marginLeft: 22}}
-                source={require('./assets/baseline_archive_white_18dp.png')}
-              />
-            </View>
-          )}
-          renderRightHiddenItem={() => (
-            <View style={styles.rightHiddenContainer}>
-              <Image
-                style={{width: 24, height: 24, marginRight: 22}}
-                source={require('./assets/baseline_delete_white_18dp.png')}
-              />
-            </View>
-          )}
+          renderItem={renderItem}
+          renderLeftHiddenItem={ArchiveRowBack}
+          renderRightHiddenItem={TrashRowBack}
           onSwipeLeft={deleteItem}
           onSwipeRight={deleteItem}
         />
@@ -69,12 +80,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'green',
   },
+  leftHiddenImage: {
+    width: 24,
+    height: 24,
+    marginLeft: 22,
+  },
   rightHiddenContainer: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
     backgroundColor: 'red',
+  },
+  rightHiddenImage: {
+    width: 24,
+    height: 24,
+    marginRight: 22,
   },
 });
 
