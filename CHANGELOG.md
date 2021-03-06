@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://github.com/mirailabs/react-native-swipe-action-list/compare/v0.0.4...v0.0.5) (2021-03-06)
+
+
+### Fixes
+
+* Bloated pkg size ([7417c0b](https://github.com/mirailabs/react-native-swipe-action-list/commit/7417c0ba49f7d5661c5190652a8c657e94593733))
+
 ### [0.0.4](https://github.com/mirailabs/react-native-swipe-action-list/compare/v0.0.3...v0.0.4) (2021-03-06)
 
 
