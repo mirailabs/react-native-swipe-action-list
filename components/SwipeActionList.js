@@ -84,7 +84,7 @@ export default class SwipeActionList extends React.Component {
     // animation after a swipe. On the very first item render, specify an
     // onLayout callback to store the height.
     if (this.state.itemHeight < 0) {
-      const onLayout = (evt) => {
+      const onLayout = evt => {
         const {height} = evt.nativeEvent.layout;
         this.setState({itemHeight: height});
       };
@@ -122,7 +122,7 @@ export default class SwipeActionList extends React.Component {
     );
   };
 
-  onSwipeValueChange = (swipeData) => {
+  onSwipeValueChange = swipeData => {
     const {key, value} = swipeData;
     this.state.opacityAnims[key].setValue(value < 0 ? -1 : 1);
   };
