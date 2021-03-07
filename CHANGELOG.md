@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/mirailabs/react-native-swipe-action-list/compare/v0.0.5...v0.0.6) (2021-03-07)
+
+
+### Performance Improvements
+
+* Avoid unnecessary renders of hidden rows ([9a35a06](https://github.com/mirailabs/react-native-swipe-action-list/commit/9a35a0626fa2ead91d9f0f10c306be04c7260ed7))
+* **example:** Avoid unneccessary fn creation ([19057fc](https://github.com/mirailabs/react-native-swipe-action-list/commit/19057fc27e1ca4241795005a74879814eed63940))
+* **example:** Avoid unnecessary renders of EmailListItem ([c6f9b36](https://github.com/mirailabs/react-native-swipe-action-list/commit/c6f9b366bc4c07995ea0192b43928ac09f3f9f65))
+
 ### [0.0.5](https://github.com/mirailabs/react-native-swipe-action-list/compare/v0.0.4...v0.0.5) (2021-03-06)
 
 
